@@ -36,7 +36,7 @@ export function DiaryList({ entries }: DiaryListProps) {
     const router = useRouter();
 
     const handleDelete = async (id: number) => {
-        if (!confirm('Are you sure you want to delete this entry?')) return;
+        // if (!confirm('Are you sure you want to delete this entry?')) return;
 
         try {
             await fetch(`/api/entries/${id}`, { method: 'DELETE' });

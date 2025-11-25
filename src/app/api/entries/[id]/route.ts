@@ -3,10 +3,11 @@ import { prisma } from '@/lib/prisma';
 
 export async function DELETE(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const id = parseInt(params.id);
+        const { id: idStr } = await params;
+        const id = parseInt(idStr);
         await prisma.diaryEntry.delete({
             where: { id },
         });
@@ -18,10 +19,11 @@ export async function DELETE(
 
 export async function PATCH(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const id = parseInt(params.id);
+        const { id: idStr } = await params;
+        const id = parseInt(idStr);
         const body = await request.json();
         const { emotion, content, date } = body;
 
