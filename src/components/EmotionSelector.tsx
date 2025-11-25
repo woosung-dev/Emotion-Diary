@@ -19,7 +19,7 @@ const emotions: { value: Emotion; label: string; icon: React.ElementType; color:
 
 export function EmotionSelector({ selected, onSelect }: EmotionSelectorProps) {
     return (
-        <div className="flex gap-4 justify-center p-4">
+        <div className="flex flex-wrap gap-4 justify-center p-4">
             {emotions.map(({ value, label, icon: Icon, color }) => (
                 <button
                     key={value}

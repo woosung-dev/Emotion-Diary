@@ -61,7 +61,26 @@ export function EmotionChart({ entries }: EmotionChartProps) {
                         ))}
                     </Pie>
                     <Tooltip
-                        contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: 'none', borderRadius: '8px', color: '#fff' }}
+                        content={({ active, payload }) => {
+                            if (active && payload && payload.length) {
+                                const data = payload[0].payload;
+                                return (
+                                    <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-2xl ring-1 ring-white/20">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <div
+                                                className="w-3 h-3 rounded-full shadow-[0_0_10px_currentColor]"
+                                                style={{ color: data.color, backgroundColor: data.color }}
+                                            />
+                                            <p className="font-bold text-white text-lg">{data.name}</p>
+                                        </div>
+                                        <p className="text-gray-300 text-sm font-medium">
+                                            Count: <span className="text-white font-bold">{data.value}</span>
+                                        </p>
+                                    </div>
+                                );
+                            }
+                            return null;
+                        }}
                     />
                     <Legend />
                 </PieChart>
