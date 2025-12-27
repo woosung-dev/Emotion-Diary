@@ -123,10 +123,6 @@ graph TD
 
 ---
 
-## 💡 회고 및 배운 점 (Retrospective)
-
-이 프로젝트를 진행하며 Server Actions 중심의 디자인 패턴과 Edge DB의 특성을 깊이 이해할 수 있었습니다.
-
 ### 트러블 슈팅 (Challenges & Solutions)
 
 #### 1. Next.js 16 & React 19 도입
